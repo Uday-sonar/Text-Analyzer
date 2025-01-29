@@ -1,0 +1,45 @@
+//Description: Developed a program that analyzes a given text string. The program should:
+//Count the number of words.
+//Identify the longest word.
+//Count the frequency of each character.
+//Reverse the text string.
+
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class TextAnalyzer {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a text: ");
+        String text = scanner.nextLine();
+    
+        // Word count
+        String[] words = text.split(" ");
+        System.out.println("Number of words: " + words.length);
+    
+        // Longest word
+        String longestWord = "";
+        for (String word : words) {
+            if (word.length() > longestWord.length()) {
+                longestWord = word;
+            }
+        }
+        System.out.println("Longest word: " + longestWord);
+    
+        // Character frequency count
+        HashMap<Character, Integer> charFrequency = new HashMap<>();
+        for (char c : text.toCharArray()) {
+            if (Character.isLetter(c)) {
+                charFrequency.put(c, charFrequency.getOrDefault(c, 0) + 1);
+            }
+        }
+        System.out.println("Character frequency: " + charFrequency);
+    
+        // Reverse the string
+        StringBuilder reversedText = new StringBuilder(text).reverse();
+        System.out.println("Reversed text: " + reversedText);
+        scanner.close();
+    }
+}
+
